@@ -13,6 +13,7 @@ setTimeout(() => {
   const covidSymptomsEl = elById('covidSymptoms')
 
   const covidProbEl = elById('covidProb') // Result view
+  const covidProb2El = elById('covidProb2') // Result view
 
   const compute = () => {
     const infected = parseInt(infectedEl.value)
@@ -26,13 +27,27 @@ setTimeout(() => {
       return
     }
 
-    const pSymp = symptoms / 365
     const pSympGivenCovid = covidSymptoms / 100
+    const pSympNormal = symptoms / 365
 
-    // Probabilty of covid given symptoms
+    // Note that number of covid cases increases the rate of symptoms.
+    // Symptoms are caused either by common causes or by covid.
+    // P(symp) = P(symptoms not by covid OR symptoms by covid)
+    //         = P(symptoms not by covid) + P(symptoms by covid)
+    const pSymp = Math.min(1, pSympNormal + pCovid * pSympGivenCovid)
+
+    // Probability of covid given symptoms
     const p = pSympGivenCovid * pCovid / pSymp
 
-    covidProbEl.innerHTML = '' + (p * 100).toFixed(2)
+    // The prob cannot be lower than pCovid. Also it cannot be larger than 1.
+    const pLimited = Math.min(1, Math.max(p, pCovid))
+
+    const percent = pLimited * 100
+
+    const pretty = percent.toFixed(1)
+
+    covidProbEl.innerHTML = '' + pretty
+    covidProb2El.innerHTML = '' + pretty
   }
 
   onInput(infectedEl, ev => compute())
