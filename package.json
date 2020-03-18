@@ -1,0 +1,37 @@
+{
+  "name": "covidcalculator",
+  "version": "0.0.0",
+  "description": "COVID-19 Probability Calculator",
+  "private": true,
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/axelpale/covidcalculator.git"
+  },
+  "scripts": {
+    "start": "python3 -m http.server -d . 8888",
+    "build": "webpack --config webpack.config.js",
+    "deploy": "rsync -r --include-from=\".deployinclude\" --exclude=\"*\" ./ xeli@xeli.webfactional.com:~/webapps/demos/covid",
+    "watchbuild": "nodemon --watch src --watch local_modules --ext js,ejs,css,json --exec 'npm run lint && npm run build'",
+    "lint": "standard 'src/**/*.js' && echo OK",
+    "lintfix": "standard --fix 'src/**/*.js' && echo OK",
+    "test": "npm run lint"
+  },
+  "author": {
+    "name": "Akseli Palén",
+    "email": "akseli.palen@gmail.com"
+  },
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "css-loader": "^3.2.0",
+    "ejs-loader": "^0.3.3",
+    "nodemon": "*",
+    "standard": "*",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "acorn": "^7.1.1",
+    "kind-of": "^6.0.3"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col">
+
+    <h1>How Probably You Have COVID-19?</h1>
+
+    <p>So you have flu-like symptoms like sore throat or fever. How likely it is that these symptoms are caused by COVID-19 and not by common cold or other sicknesses?</p>
+
+    <form>
+      <div class="form-group">
+        <label for="infected">How many infected individuals in your area?</label>
+        <input type="number" class="form-control" id="infected" aria-describedby="Number of Infected" placeholder="">
+        <small id="infectedHelp" class="form-text text-muted">Estimate. This should be higher than the number of confirmed cases in your area.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="population">How large population in your area?</label>
+        <input type="number" class="form-control" id="population" aria-describedby="Population" placeholder="">
+        <small id="populationHelp" class="form-text text-muted">Number of individuals. You can find this information for example on Wikipedia.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="symptoms">How many days you have flu-like symptoms in a year on average?</label>
+        <input type="number" class="form-control" id="symptoms" aria-describedby="Days" placeholder="" value="10">
+        <small id="symptomsHelp" class="form-text text-muted">Typically people experience seven to twenty days of common cold in a year.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="covidSymptoms">If a hundred individuals are infected with COVID-19 then how many of them shows any symptoms?</label>
+        <input type="number" class="form-control" id="covidSymptoms" aria-describedby="Individuals" placeholder="" value="95">
+        <small id="symptomsHelp" class="form-text text-muted">About 5% of infected adults show no symptoms [1].</small>
+      </div>
+    </form>
+
+    <p>There is <span id="covidProb">?</span>/100 chance that you have COVID-19.</p>
+
+    <h2>How was this result computed?</h2>
+
+    <p>Bla bla</p>
+
+  </div>
+</div>
