@@ -1,57 +1,61 @@
-const template = require('./template.ejs')
+var template = require('./template.ejs')
 
-const elById = id => document.getElementById(id)
-const onInput = (el, handler) => el.addEventListener('input', handler)
+var elById = function (id) {
+  return document.getElementById(id)
+}
+var onInput = function (el, handler) {
+  el.addEventListener('input', handler)
+}
 
-const contEl = elById('container')
+var contEl = elById('container')
 contEl.innerHTML = template({})
 
-setTimeout(() => {
-  const infectedEl = elById('infected')
-  const populationEl = elById('population')
-  const symptomsEl = elById('symptoms')
-  const covidSymptomsEl = elById('covidSymptoms')
+setTimeout(function () {
+  var infectedEl = elById('infected')
+  var populationEl = elById('population')
+  var symptomsEl = elById('symptoms')
+  var covidSymptomsEl = elById('covidSymptoms')
 
-  const covidProbEl = elById('covidProb') // Result view
-  const covidProb2El = elById('covidProb2') // Result view
+  var covidProbEl = elById('covidProb') // Result view
+  var covidProb2El = elById('covidProb2') // Result view
 
-  const compute = () => {
-    const infected = parseInt(infectedEl.value)
-    const population = parseInt(populationEl.value)
-    const symptoms = parseInt(symptomsEl.value)
-    const covidSymptoms = parseInt(covidSymptomsEl.value)
+  var compute = function () {
+    var infected = parseInt(infectedEl.value)
+    var population = parseInt(populationEl.value)
+    var symptoms = parseInt(symptomsEl.value)
+    var covidSymptoms = parseInt(covidSymptomsEl.value)
 
-    const pCovid = infected / population
+    var pCovid = infected / population
 
     if (isNaN(pCovid)) {
       return
     }
 
-    const pSympGivenCovid = covidSymptoms / 100
-    const pSympNormal = symptoms / 365
+    var pSympGivenCovid = covidSymptoms / 100
+    var pSympNormal = symptoms / 365
 
     // Note that number of covid cases increases the rate of symptoms.
     // Symptoms are caused either by common causes or by covid.
     // P(symp) = P(symptoms not by covid OR symptoms by covid)
     //         = P(symptoms not by covid) + P(symptoms by covid)
-    const pSymp = Math.min(1, pSympNormal + pCovid * pSympGivenCovid)
+    var pSymp = Math.min(1, pSympNormal + pCovid * pSympGivenCovid)
 
     // Probability of covid given symptoms
-    const p = pSympGivenCovid * pCovid / pSymp
+    var p = pSympGivenCovid * pCovid / pSymp
 
     // The prob cannot be lower than pCovid. Also it cannot be larger than 1.
-    const pLimited = Math.min(1, Math.max(p, pCovid))
+    var pLimited = Math.min(1, Math.max(p, pCovid))
 
-    const percent = pLimited * 100
+    var percent = pLimited * 100
 
-    const pretty = percent.toFixed(1)
+    var pretty = percent.toFixed(1)
 
     covidProbEl.innerHTML = '' + pretty
     covidProb2El.innerHTML = '' + pretty
   }
 
-  onInput(infectedEl, ev => compute())
-  onInput(populationEl, ev => compute())
-  onInput(symptomsEl, ev => compute())
-  onInput(covidSymptomsEl, ev => compute())
+  onInput(infectedEl, function (ev) { compute() })
+  onInput(populationEl, function (ev) { compute() })
+  onInput(symptomsEl, function (ev) { compute() })
+  onInput(covidSymptomsEl, function (ev) { compute() })
 }, 0)
