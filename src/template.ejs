@@ -42,6 +42,12 @@
       <p>Although the changes might sound small, remember that the risks involved in spreading the disease are far greater than gains in meeting people. Do not put others at risk.</p>
     </div>
 
+    <h2>Disclaimer</h2>
+
+    <p>Do not base your actions on results given by this calculator. This calculator only aims to provide one additional point of view on top of other beliefs, models, and information sources about COVID-19. This calculator is only a simple analytical tool and does not weight in the heavy risks to you and to others if you happen to be infected. Stay safe.</p>
+
+    <p>This is free and open source software. Feel free to improve it. <a href="https://github.com/axelpale/covidcalculator">See the source code at GitHub</a>.</p>
+
     <h2>How was this result computed?</h2>
 
     <p>The result is computed by using <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem">Bayes' theorem</a>, an important result in probability theory. The theorem goes like this: <em>P(C|S) = P(S|C) * P(C) / P(S)</em>. What do these symbols mean?</p>
@@ -53,12 +59,6 @@
     <p>The ratio of infected, <em>P(C)</em>, we estimate by taking the number of infected people in an area and divide that number by the total number of people in that area. The ratio of people showing symptoms when being infected, <em>P(S|C)</em>, can be estimated from available medical statistics like [1]. The ratio of people showing symptoms, <em>P(S)</em>, we estimate based on your personal tendency of being sick. The more often you are sick, the less probable it is that your current symptoms imply COVID-19 and not something else. However there is a catch. Your personal tendency of being sick does not include the effect of the new epidemic. The symptoms are caused either by the virus OR by something causing your personal tendency of being sick. Therefore we must define <em>P(S) = P(S_covid OR S_common) = P(S_covid) + P(S_common)</em>.</p>
 
     <p>Put these all together and apply Bayes' theorem, we get a rough estimate of the ratio of people, who after feeling some symptoms, truly have the virus, <em>P(C|S)</em>.</p>
-
-    <h2>Disclaimer</h2>
-
-    <p>Do not base your actions on results given by this calculator. This calculator only aims to provide one additional point of view on top of other beliefs, models, and information sources about COVID-19. This calculator is only a simple analytical tool and does not weight in the heavy risks to you and to others if you happen to be infected. Stay safe.</p>
-
-    <p>This is free and open source software. Feel free to improve it. <a href="https://github.com/axelpale/covidcalculator">See the source code at GitHub</a>.</p>
 
     <h2>References</h2>
 
