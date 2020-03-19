@@ -34,9 +34,13 @@
 
     <h2>Results</h2>
 
-    <p>There is <span id="covidProb">?</span> in 100 chance that you have COVID-19. In other words, in a group of 100 individuals like you, about <span id="covidProb2">?</span> are truly infected.</p>
+    <p id="results-prompt">Please fill in the fields above to see the results.</p>
 
-    <p>Although the changes might sound small, remember that the risks involved in spreading the disease are far greater than gains in meeting people. Do not put others at risk.</p>
+    <div id="results" class="d-none">
+      <p><strong>There is <span id="covidProb">?</span> in 100 chance that you have COVID-19.</strong> In other words, in a group of 100 individuals like you, about <span id="covidProb2">?</span> are truly infected.</p>
+
+      <p>Although the changes might sound small, remember that the risks involved in spreading the disease are far greater than gains in meeting people. Do not put others at risk.</p>
+    </div>
 
     <h2>How was this result computed?</h2>
 

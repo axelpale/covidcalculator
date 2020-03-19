@@ -16,8 +16,10 @@ setTimeout(function () {
   var symptomsEl = elById('symptoms')
   var covidSymptomsEl = elById('covidSymptoms')
 
-  var covidProbEl = elById('covidProb') // Result view
-  var covidProb2El = elById('covidProb2') // Result view
+  var resultsEl = elById('results')
+  var resultsPromptEl = elById('results-prompt')
+  var covidProbEl = elById('covidProb') // Result value
+  var covidProb2El = elById('covidProb2') // Result value
 
   var compute = function () {
     var infected = parseInt(infectedEl.value)
@@ -52,6 +54,10 @@ setTimeout(function () {
 
     covidProbEl.innerHTML = '' + pretty
     covidProb2El.innerHTML = '' + pretty
+
+    // Hide prompt and show results
+    resultsEl.className = ''
+    resultsPromptEl.className = 'd-none'
   }
 
   onInput(infectedEl, function (ev) { compute() })
